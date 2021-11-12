@@ -5,8 +5,8 @@ article {
 }
 
 .elemento {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border: 1px solid black;
     display: flex;
     flex-direction: column;

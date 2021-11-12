@@ -42,6 +42,20 @@ function Pessoa({nome, sobrenome, idade}) {
     );
 }
 
+function TresPessoas() {
+    const pessoa1 = { nome: "Pessoa 1", sobrenome: "Pessoa 1", idade: 10 }
+    const pessoa2 = { nome: "Pessoa 2", sobrenome: "Pessoa 2", idade: 20 }
+    const pessoa3 = { nome: "Pessoa 3", sobrenome: "Pessoa 3", idade: 30 }
+
+    return (
+        <>
+            <Pessoa nome={pessoa1.nome} sobrenome={pessoa1.sobrenome} idade={pessoa1.idade} />
+            <Pessoa nome={pessoa2.nome} sobrenome={pessoa2.sobrenome} idade={pessoa2.idade} />
+            <Pessoa nome={pessoa3.nome} sobrenome={pessoa3.sobrenome} idade={pessoa3.idade} />
+        </>
+    );
+}
+
 function ElementoQuimico(props) {
     return (
         <p className="elemento">
@@ -51,6 +65,47 @@ function ElementoQuimico(props) {
         </p>
     );
 }
+
+const nome = "Leonardo";
+const sobrenome = "Ribeiro";
+const idade = 76;
+
+const frutas = ["Maçã", "Banana", "Abacate"];
+const paragrafosFrutas = [];
+for (let i = 0; i < frutas.length; i++) {
+    const fruta = frutas[i];
+    const paragrafo = <p>{fruta}</p>;
+    paragrafosFrutas.push(paragrafo);
+}
+
+const paragrafosFrutasUsandoMap = frutas.map((texto) => { return <p>{texto}</p> });
+
+const serieDosLantanideios = [
+    { nmr: 57, simbulo: "La", nome: "Lantânio" },
+    { nmr: 58, simbulo: "Ce", nome: "Cério" },
+    { nmr: 59, simbulo: "Pr", nome: "Praseodímio" },
+    { nmr: 60, simbulo: "Nd", nome: "Neodímio" },
+    { nmr: 61, simbulo: "Pm", nome: "Promécio" },
+    { nmr: 62, simbulo: "Sm", nome: "Samário" },
+    { nmr: 63, simbulo: "Eu", nome: "Európio" },
+    { nmr: 64, simbulo: "Gd", nome: "Gadolínio" },
+    { nmr: 65, simbulo: "Tb", nome: "Térbio" },
+    { nmr: 66, simbulo: "Dy", nome: "Disprosio" },
+    { nmr: 67, simbulo: "Ho", nome: "Holmio" },
+    { nmr: 68, simbulo: "Er", nome: "Érbio" },
+    { nmr: 69, simbulo: "Tm", nome: "Túlio" },
+    { nmr: 70, simbulo: "Yb", nome: "Itérbio" },
+    { nmr: 71, simbulo: "Lu", nome: "Lutécio" },
+];
+
+const serieLantanideosTabelaPeriodica = (
+    <table>
+        <caption>Série dos Lantanídeos</caption>
+        <tr>
+            { serieDosLantanideios.map((elemento) => (<td> <ElementoQuimico nmr={elemento.nmr} simbulo={elemento.simbulo} nome={elemento.nome}/> </td>)) }
+        </tr>
+    </table>
+);
 
 function App() {
     return (
@@ -107,8 +162,34 @@ function App() {
                             <td>
                                 <ElementoQuimico nmr={58} simbulo="Ce" nome="Cério"/>
                             </td>
+                            <td>
+                                <ElementoQuimico nmr={59} simbulo="Pr" nome="Praseodímio" />
+                            </td>
+                            <td>
+                                <ElementoQuimico nmr={60} simbulo="Nd" nome="Neodímio" />
+                            </td>
                         </tr>
                     </table>
+                </article>
+                <article>
+                    <h2>Usando variáveis para enviar propriedades para os componentes</h2>
+                    <Pessoa nome={nome} sobrenome={sobrenome} idade={idade}/>
+                </article>
+                <article>
+                    <h2>Componente passando dados para outros componente interno</h2>
+                    <TresPessoas />
+                </article>
+                <article>
+                    <h2>Renderizando lista de frutas com parágrafos</h2>
+                    {paragrafosFrutas}
+                </article>
+                <article>
+                    <h2>Renderizando lista de frutas com paragráfos criados usando a função map dos arras</h2>
+                    {paragrafosFrutasUsandoMap}
+                </article>
+                <article>
+                    <h2>Série dos Lantanídeos da tabela periódica criada usando list de objetos e o método map dos arrays</h2>
+                    {serieLantanideosTabelaPeriodica}
                 </article>
             </section>
         </>
