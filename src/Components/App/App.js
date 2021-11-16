@@ -48,11 +48,11 @@ const frutas = ["Maçã", "Banana", "Abacate"];
 const paragrafosFrutas = [];
 for (let i = 0; i < frutas.length; i++) {
     const fruta = frutas[i];
-    const paragrafo = <p>{fruta}</p>;
+    const paragrafo = <p key={i}>{fruta}</p>;
     paragrafosFrutas.push(paragrafo);
 }
 
-const paragrafosFrutasUsandoMap = frutas.map((texto) => { return <p>{texto}</p> });
+const paragrafosFrutasUsandoMap = frutas.map((texto, indice) => { return <p key={indice}>{texto}</p> });
 
 const serieDosLantanideios = [
     { nmr: 57, simbulo: "La", nome: "Lantânio" },
@@ -76,7 +76,7 @@ const serieLantanideosTabelaPeriodica = (
     <table>
         <caption>Série dos Lantanídeos</caption>
         <tr>
-            { serieDosLantanideios.map((elemento) => (<td> <ElementoQuimico {...elemento}/> </td>)) }
+            { serieDosLantanideios.map((elemento) => (<td key={elemento.nmr}> <ElementoQuimico {...elemento}/> </td>)) }
         </tr>
     </table>
 );
@@ -110,6 +110,18 @@ const secoes = [
 
 function cliclouNoBotao() {
     alert("Clicou no botão!");
+}
+
+function passouOCursorNoElemento() {
+    alert("Passou o cursor no elemenot!");
+}
+
+function mudouOValor() {
+    alert("Mudou o valor!");
+}
+
+function mostrarMensagem(mensagem) {
+    alert(mensagem);
 }
 
 function App() {
@@ -237,6 +249,30 @@ function App() {
                 <article>
                     <h3>Eventos em React (usando o onclick)</h3>
                     <button type="button" onClick={cliclouNoBotao}>Clique-me!</button>
+                </article>
+                <article>
+                    <h3>Usando o onmouseover</h3>
+                    <p>Descomentar o código para ver o resultado.</p>
+                    {/* <p onMouseOver={passouOCursorNoElemento}>Passe o mouse sobre mim!</p> */}
+                </article>
+                <article>
+                    <h3>Usando o onchange</h3>
+                    <form>
+                        <input type="text" placeholder="digite alguma coisa" onChange={mudouOValor} />
+                    </form>
+                </article>
+                <article>
+                    <h3>Função com passagem de argumento para eventos no React</h3>
+                    <button type="button" onClick={() => mostrarMensagem("Bom dia!")}>Bom dia!</button>
+                    <button type="button" onClick={() => mostrarMensagem("Boa tarde!")}>Boa tarde!</button>
+                    <button type="button" onClick={() => mostrarMensagem("Boa noite!")}>Boa noite!</button>
+                </article>
+                <article>
+                    <h3>Exibindo objeto do evento disparado em React no console do navegador</h3>
+                    <ul>
+                        <li onClick={(evento) => { console.log(evento); }}>Clique</li>
+                        <li onMouseOver={(evento) => { console.log(evento); }}>Mouseover</li>
+                    </ul>
                 </article>
             </section>
         </>
