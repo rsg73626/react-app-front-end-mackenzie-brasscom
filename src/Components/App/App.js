@@ -1,8 +1,16 @@
-import './App.css';
-
-import CarroComClasse from '../CarroComClasse';
-import Carro from '../Carro';
-import Garagem from '../Garagem';
+import Carro from "../Carro";
+import CarroComClasse from "../CarroComClasse";
+import Garagem from "../Garagem";
+import Pessoa from "../Pessoa";
+import TresPessoas from "../TresPessoas";
+import ElementoQuimico from "../ElementoQuimico";
+import Pet from "../Pet";
+import Smartphone from "../Smartphone";
+import Clima from "../Clima";
+import Login from "../Login";
+import Definicoes from "../Definicoes";
+import Dicionario from "../Dicionario";
+import "./App.css";
 
 const tabela = (
     <table>
@@ -31,40 +39,6 @@ const doisParagrafosComFragment = (
         <p>Com fragment</p>
     </>
 );
-
-function Pessoa({nome, sobrenome, idade}) {
-    return (
-        <ul>
-            <li>Nome: {nome}.</li>
-            <li>Sobrenome: {sobrenome}.</li>
-            <li>Idade: {idade}.</li>
-        </ul>
-    );
-}
-
-function TresPessoas() {
-    const pessoa1 = { nome: "Pessoa 1", sobrenome: "Pessoa 1", idade: 10 }
-    const pessoa2 = { nome: "Pessoa 2", sobrenome: "Pessoa 2", idade: 20 }
-    const pessoa3 = { nome: "Pessoa 3", sobrenome: "Pessoa 3", idade: 30 }
-
-    return (
-        <>
-            <Pessoa nome={pessoa1.nome} sobrenome={pessoa1.sobrenome} idade={pessoa1.idade} />
-            <Pessoa nome={pessoa2.nome} sobrenome={pessoa2.sobrenome} idade={pessoa2.idade} />
-            <Pessoa nome={pessoa3.nome} sobrenome={pessoa3.sobrenome} idade={pessoa3.idade} />
-        </>
-    );
-}
-
-function ElementoQuimico(props) {
-    return (
-        <p className="elemento">
-            <span>{props.nmr}</span>
-            <span>{props.simbulo}</span>
-            <span>{props.nome}</span>
-        </p>
-    );
-}
 
 const nome = "Leonardo";
 const sobrenome = "Ribeiro";
@@ -102,10 +76,37 @@ const serieLantanideosTabelaPeriodica = (
     <table>
         <caption>Série dos Lantanídeos</caption>
         <tr>
-            { serieDosLantanideios.map((elemento) => (<td> <ElementoQuimico nmr={elemento.nmr} simbulo={elemento.simbulo} nome={elemento.nome}/> </td>)) }
+            { serieDosLantanideios.map((elemento) => (<td> <ElementoQuimico {...elemento}/> </td>)) }
         </tr>
     </table>
 );
+
+const listaDeDefinicoes = [
+    { termo: "Palavra 1", definicao: "Definição da palavra 1." },
+    { termo: "Palavra 2", definicao: "Definição da palavra 2." },
+    { termo: "Palavra 3", definicao: "Definição da palavra 3." },
+    { termo: "Palavra 4", definicao: "Definição da palavra 4." },
+    { termo: "Palavra 5", definicao: "Definição da palavra 5." }
+];
+
+const secoes = [
+    {
+        letra: "A", 
+        definicoes: [
+            {termo: "Ameixa", definicao: "Texto com a definição da palavra ameixa."},
+            {termo: "Amor", definicao: "Texto com a definição da palavra amor."},
+            {termo: "Amordaçado", definicao: "Texto com a definição da palavra amordaçado."},
+        ]
+    },
+    {
+        letra: "B",
+        definicoes: [
+            {termo: "Bola", definicao: "Definiçã de bola"},
+            {termo: "Bolo", definicao: "Definiçã de bolo"},
+            {termo: "Borracha", definicao: "Definiçã de borracha"},
+        ]
+    }
+];
 
 function App() {
     return (
@@ -188,8 +189,42 @@ function App() {
                     {paragrafosFrutasUsandoMap}
                 </article>
                 <article>
-                    <h2>Série dos Lantanídeos da tabela periódica criada usando list de objetos e o método map dos arrays</h2>
+                    <h2>Série dos Lantanídeos da tabela periódica criada usando lista de objetos e o método map dos arrays</h2>
                     {serieLantanideosTabelaPeriodica}
+                </article>
+                <article>
+                    <h2>Pets</h2>
+
+                    <Pet tipo="Cachorro" raca="Vira-lata" nome="Neném" idade="8 anos" />
+                    <Pet tipo="Cachorro" raca="Vira-lata" nome="Kaio" idade="8 anos" />
+
+                </article>
+                <article>
+                    <h2>Smartphone</h2>
+
+                    <Smartphone marca="Apple" modelo="iPhone 13" ano={2021} preco="R$ 15.000,00" />
+
+                </article>
+                <article>
+                    <h2>Clima</h2>
+                    
+                    <Clima local="São Paulo - SP" temp="28 graus" clima="Ensolarado" data="20/12/2021" max="30 graus" min="28 graus"/>
+
+                </article>
+                <article>
+                    <h2>Formulário de login criado com um componente React</h2>
+                    
+                    <Login />
+
+                </article>
+                <article>
+                    <h2>Definições</h2>
+                    <Definicoes lista={listaDeDefinicoes} />
+                </article>
+                <article>
+                    <h2>Dicionário</h2>
+
+                    <Dicionario secoes={secoes} />
                 </article>
             </section>
         </>
