@@ -108,34 +108,39 @@ const secoes = [
     }
 ];
 
+function cliclouNoBotao() {
+    alert("Clicou no botão!");
+}
+
 function App() {
     return (
         <>
             <h1>Meu primeiro app React.</h1>
             <section>
+                <h2>Primeiro semana de aula</h2>
                 <article>
-                    <h2>Tabela criada com JSX</h2>
+                    <h3>Tabela criada com JSX</h3>
                     {tabela}
                 </article>
                 <article>
-                    <h2>Agrupando parágrafos com uma div</h2>
+                    <h3>Agrupando parágrafos com uma div</h3>
                     {doisParagrafos}
                 </article>
                 <article>
-                    <h2>Agrupando parágrafos com fragment</h2>
+                    <h3>Agrupando parágrafos com fragment</h3>
                     {doisParagrafosComFragment}
                 </article>
                 <article>
-                    <h2>Criando componentes React</h2>
+                    <h3>Criando componentes React</h3>
                     <CarroComClasse cor="Vermelho"/>
                     <Carro cor="Azul"/>
                 </article>
                 <article>
-                    <h2>Componente referenciando outro componente.</h2>
+                    <h3>Componente referenciando outro componente.</h3>
                     <Garagem />
                 </article>
                 <article>
-                    <h2>Prática (primeiro componente)</h2>
+                    <h3>Prática (primeiro componente)</h3>
                     <ol>
                         <li>Criar um componente pessoa.</li>
                         <li>O componente deve receber a propriedade Nome.</li>
@@ -151,7 +156,7 @@ function App() {
                     <Pessoa nome="Rafael" sobrenome="Germano" idade="45"/>
                 </article>
                 <article>
-                    <h2>Atividade guiada: componente elemento para tabela periódica</h2>
+                    <h3>Atividade guiada: componente elemento para tabela periódica</h3>
                     <table>
                         <caption>
                             Série dos Lantanídeos
@@ -173,58 +178,65 @@ function App() {
                     </table>
                 </article>
                 <article>
-                    <h2>Usando variáveis para enviar propriedades para os componentes</h2>
+                    <h3>Usando variáveis para enviar propriedades para os componentes</h3>
                     <Pessoa nome={nome} sobrenome={sobrenome} idade={idade}/>
                 </article>
                 <article>
-                    <h2>Componente passando dados para outros componente interno</h2>
+                    <h3>Componente passando dados para outros componente interno</h3>
                     <TresPessoas />
                 </article>
                 <article>
-                    <h2>Renderizando lista de frutas com parágrafos</h2>
+                    <h3>Renderizando lista de frutas com parágrafos</h3>
                     {paragrafosFrutas}
                 </article>
                 <article>
-                    <h2>Renderizando lista de frutas com paragráfos criados usando a função map dos arras</h2>
+                    <h3>Renderizando lista de frutas com paragráfos criados usando a função map dos arras</h3>
                     {paragrafosFrutasUsandoMap}
                 </article>
                 <article>
-                    <h2>Série dos Lantanídeos da tabela periódica criada usando lista de objetos e o método map dos arrays</h2>
+                    <h3>Série dos Lantanídeos da tabela periódica criada usando lista de objetos e o método map dos arrays</h3>
                     {serieLantanideosTabelaPeriodica}
                 </article>
                 <article>
-                    <h2>Pets</h2>
+                    <h3>Pets</h3>
 
                     <Pet tipo="Cachorro" raca="Vira-lata" nome="Neném" idade="8 anos" />
                     <Pet tipo="Cachorro" raca="Vira-lata" nome="Kaio" idade="8 anos" />
 
                 </article>
                 <article>
-                    <h2>Smartphone</h2>
+                    <h3>Smartphone</h3>
 
                     <Smartphone marca="Apple" modelo="iPhone 13" ano={2021} preco="R$ 15.000,00" />
 
                 </article>
                 <article>
-                    <h2>Clima</h2>
+                    <h3>Clima</h3>
                     
                     <Clima local="São Paulo - SP" temp="28 graus" clima="Ensolarado" data="20/12/2021" max="30 graus" min="28 graus"/>
 
                 </article>
                 <article>
-                    <h2>Formulário de login criado com um componente React</h2>
+                    <h3>Formulário de login criado com um componente React</h3>
                     
                     <Login />
 
                 </article>
                 <article>
-                    <h2>Definições</h2>
+                    <h3>Definições</h3>
                     <Definicoes lista={listaDeDefinicoes} />
                 </article>
                 <article>
-                    <h2>Dicionário</h2>
+                    <h3>Dicionário</h3>
 
                     <Dicionario secoes={secoes} />
+                </article>
+            </section>
+            <section>
+                <h2>Segunda semana de aula</h2>
+                <article>
+                    <h3>Eventos em React (usando o onclick)</h3>
+                    <button type="button" onClick={cliclouNoBotao}>Clique-me!</button>
                 </article>
             </section>
         </>
