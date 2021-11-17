@@ -1,4 +1,4 @@
-
+import React from 'react';
 import Pessoa from "./Pessoa";
 
 function TresPessoas() {
