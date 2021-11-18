@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import "./ListaTarefas.css";
 
 function ListaTarefas() {
 
@@ -21,7 +22,7 @@ function ListaTarefas() {
         return tarefas.map((tarefa) => {
             return (
                 <label key={tarefa.id}>
-                    <input type="checkbox" onClick={ () => { clicouNaTarefa(tarefa.id) } }/>
+                    <input type="checkbox" onClick={ () => { clicouNaTarefa(tarefa.id) } } checked={tarefa.concluido ? "checked" : ""} />
                     {tarefa.nome}
                 </label>
             )
@@ -34,6 +35,8 @@ function ListaTarefas() {
     }
 
     const adicionar = () => {
+        if (novaTarefa == "") { return }
+        if (novaTarefa.trim() == "") { return }
         const novaTarefaObjeto = {
             id: id,
             nome: novaTarefa,
@@ -44,10 +47,29 @@ function ListaTarefas() {
         setNovaTarefa("");
     }
 
+    useEffect(() => {
+        const idSalvo = localStorage.getItem("ultimo-id-tarefa");
+        if (idSalvo != undefined && idSalvo != "") {
+            const idNumero = Number(idSalvo);
+            setId(idNumero);
+        }
+        const tarefasSalva = localStorage.getItem("tarefas");
+        if (tarefasSalva != undefined && tarefasSalva != "") {
+            const arrayDeTarefas = JSON.parse(tarefasSalva);
+            setTarefas(arrayDeTarefas);
+        }
+    }, []);
+
+    useEffect(() => {
+        console.log("Executou ação do use effect!");
+        localStorage.setItem("ultimo-id-tarefa", id + "");
+        localStorage.setItem("tarefas", JSON.stringify(tarefas));
+    }, [tarefas]);
+
     return (
         <>
             <h1>Lista de tarefas</h1>
-            <form>
+            <form id="lista-tarefas">
                 { getTarefasJSX() }
             </form>
             <form>
